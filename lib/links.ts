@@ -64,7 +64,7 @@ export interface LinkSection {
 /** Brand/product identity, kept here so the footer and header agree. */
 export const SITE = {
   name: 'Arc Markets',
-  tagline: 'Binary prediction markets settled in USDC on Circle Arc L1.',
+  tagline: 'Binary prediction markets settled in USDC on Circle Arc L1.Built by Fabio',
 } as const;
 
 function external(label: string, raw: string | undefined, fallback: string): SiteLink {
@@ -83,7 +83,7 @@ function internal(label: string, path: string): SiteLink {
  * per-deployment with the corresponding env var.
  */
 export const SOCIAL_LINKS: SiteLink[] = [
-  external('Twitter / X', process.env.NEXT_PUBLIC_LINK_TWITTER, 'https://x.com/circle'),
+  external('Twitter / X', process.env.NEXT_PUBLIC_LINK_TWITTER, 'https://x.com/fabio43623913'),
   external('Discord', process.env.NEXT_PUBLIC_LINK_DISCORD, 'https://discord.com/invite/buildoncircle'),
 ];
 
