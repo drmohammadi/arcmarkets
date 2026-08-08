@@ -28,8 +28,6 @@ Built for **Arc** — Circle's native-USDC stablecoin L1. Gas is paid in 6-decim
 npm install
 ```
 
-The root `.npmrc` enforces the 7-day supply-chain policy. See `DEPENDENCIES.md` for rationale.
-
 ### 2. Deploy contracts (local Hardhat node)
 
 Terminal 1 — start a local Hardhat network:
@@ -123,19 +121,6 @@ Visit `/admin` (owner-gated):
 - **FPMM**: Constant-product market maker. Reserves obey x·y = k (Gnosis-style, buy by collateral-in, sell by collateral-out, ceilDiv rounding favors the pool). Fee accrues to LPs as extra outcome tokens.
 - **MarketFactory**: Owns ConditionalTokens, prepares conditions, deploys FPMMs, stores metadata, enforces time-gated + resolver-gated resolution.
 
-## Security
-
-See `SECURITY.md` for the full model. Highlights:
-
-- **Supply-chain:** 7-day minimum release age on all deps, enforced as a **documented
-  process control, not mechanically** — `min-release-age` is a pnpm setting and npm ignores
-  it. Publish dates are checked against the registry before pinning; see `DEPENDENCIES.md`.
-  `.npmrc` *does* mechanically enforce `ignore-scripts=true` (no lifecycle scripts run) and
-  `save-exact=true`.
-- **Sanitization:** All contract-returned strings (questions, categories) are sanitized before render.
-- **Slippage:** Buy/sell have minSharesOut/maxSharesIn protection.
-- **Mainnet guard:** Mainnet deployment requires three env vars + manual confirmation to prevent accidental prod pushes.
-- **No admin keys in production:** The factory owner can create/resolve markets but cannot rug liquidity or steal funds.
 
 ## Repo Structure
 
@@ -160,5 +145,5 @@ arc-prediction-market/
 
 MIT — see LICENSE file.
 
-## 
+
 Built by Fabio.
